@@ -21,10 +21,25 @@ public class Jugador {
     @Column(name = "peso", nullable = false)
     private Float peso;
 
+    @Column(name = "edad", nullable = false)
+    private Integer edad;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "idEquipo")
     private Equipo idEquipo;
+
+    public Jugador() {
+        super();
+    }
+
+    public Jugador(String nombre, Float estatura, Float peso, int edad,  Equipo idEquipo) {
+        this.nombre = nombre;
+        this.estatura = estatura;
+        this.peso = peso;
+        this.edad = edad;
+        this.idEquipo = idEquipo;
+    }
 
     public Integer getId() {
         return id;
@@ -66,4 +81,14 @@ public class Jugador {
         this.idEquipo = idEquipo;
     }
 
+    @Override
+    public String toString() {
+        return "Jugador{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", estatura=" + estatura +
+                ", peso=" + peso +
+                ", idEquipo=" + idEquipo +
+                '}';
+    }
 }

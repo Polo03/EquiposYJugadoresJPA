@@ -8,7 +8,7 @@ public class Equipo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Integer id;
+    private Long id;
 
     @Column(name = "nombre", nullable = false, length = 100)
     private String nombre;
@@ -16,11 +16,20 @@ public class Equipo {
     @Column(name = "estadio", nullable = false, length = 100)
     private String estadio;
 
-    public Integer getId() {
+    public Equipo() {
+        super();
+    }
+
+    public Equipo(String nombre, String estadio) {
+        this.nombre = nombre;
+        this.estadio = estadio;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -40,4 +49,12 @@ public class Equipo {
         this.estadio = estadio;
     }
 
+    @Override
+    public String toString() {
+        return "Equipo{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", estadio='" + estadio + '\'' +
+                '}';
+    }
 }
