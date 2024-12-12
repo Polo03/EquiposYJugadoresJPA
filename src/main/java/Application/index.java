@@ -40,15 +40,23 @@ public class index {
 
                         // Crear una nueva instancia de Equipo
                         Equipo equipo = new Equipo();
-                        equipo.setEstadio(nombreEstadio);
                         equipo.setNombre(nombreEquipo);
+                        equipo.setEstadio(nombreEstadio);
 
-                        // Iniciar la transacción
-                        em.getTransaction().begin();
-                        // Persistir el objeto, lo que generará un id automáticamente
-                        em.persist(equipo);
-                        // Confirmar la transacción
-                        em.getTransaction().commit();
+                        try{
+                            // Iniciar la transacción
+                            if (!em.getTransaction().isActive()) {
+                                em.getTransaction().begin();
+                            }
+                            // Persistir el objeto, lo que generará un id automáticamente
+                            em.persist(equipo);
+                            // Confirmar la transacción
+                            em.getTransaction().commit();
+                            em.close();
+                        }catch (Exception e){
+                            System.out.println(e.getMessage());
+                        }
+
 
                         System.out.println("Equipo insertado correctamente");
                     }else if(tablaAOperar==2){
@@ -73,6 +81,45 @@ public class index {
                         System.out.println("Jugador insertado correctamente");
                     }else
                         System.out.print("No ha seleccionado ninguna de las dos tablas proporcionadas anteriormente.");
+                    break;
+                case 2:
+                    System.out.print("¿En cual de las dos tablas quiere insertar? (1. Equipos/2. Jugadores) ");
+                    tablaAOperar = sc.nextInt();
+                    sc.nextLine();
+                    if(tablaAOperar==1){
+
+                    } else if (tablaAOperar==2) {
+
+                    }else
+                        System.out.println("No ha seleccionado ninguna de las dos tablas");
+                    break;
+                case 3:
+                    System.out.print("¿En cual de las dos tablas quiere insertar? (1. Equipos/2. Jugadores) ");
+                    tablaAOperar = sc.nextInt();
+                    sc.nextLine();
+                    if(tablaAOperar==1){
+
+                    } else if (tablaAOperar==2) {
+
+                    }else
+                        System.out.println("No ha seleccionado ninguna de las dos tablas");
+                    break;
+                case 4:
+                    System.out.print("¿En cual de las dos tablas quiere insertar? (1. Equipos/2. Jugadores) ");
+                    tablaAOperar = sc.nextInt();
+                    sc.nextLine();
+                    if(tablaAOperar==1){
+
+                    } else if (tablaAOperar==2) {
+
+                    }else
+                        System.out.println("No ha seleccionado ninguna de las dos tablas");
+                    break;
+                case 5:
+                    System.out.println("Ha salido de la consola");
+                    break;
+                default:
+                    System.out.println("Opcion no valida");
                     break;
             }
         }while(indice!=6);
