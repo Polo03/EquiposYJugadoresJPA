@@ -73,6 +73,14 @@ public class Jugador {
         this.peso = peso;
     }
 
+    public Integer getEdad() {
+        return edad;
+    }
+
+    public void setEdad(Integer edad) {
+        this.edad = edad;
+    }
+
     public Equipo getIdEquipo() {
         return idEquipo;
     }
